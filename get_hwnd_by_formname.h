@@ -1,0 +1,4 @@
+#ifndef GET_HWND_BY_FORMNAME_H
+#define GET_HWND_BY_FORMNAME_H
+
+#endif // GET_HWND_BY_FORMNAME_H
