@@ -1,11 +1,7 @@
-#ifndef GLOBAL_H
+﻿#ifndef GLOBAL_H
 #define GLOBAL_H
+#include "Windows.h"
+#include <QSet>
 
-
-class global
-{
-public:
-    global();
-};
-
+extern QSet<HWND> SetHwnd;
 #endif // GLOBAL_H

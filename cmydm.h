@@ -1,4 +1,5 @@
-#pragma once
+﻿#ifndef CMYDM_H
+#define CMYDM_H
 #include "dm.h"
 
 using namespace Dm;
@@ -22,3 +23,4 @@ private:
     static void RegDllByCmd(QString dllName);
 
 };
+#endif

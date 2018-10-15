@@ -1,4 +1,4 @@
-
+﻿
 #include "cmydm.h"
 #include <QMessageBox>
 #include <QDir>
@@ -27,7 +27,6 @@ Idmsoft* CMyDM::GetIns()
 {
     if (m_DM == NULL)
     {
-        qDebug("new CFZCB");
         m_DM = new Idmsoft();
         init();
     }

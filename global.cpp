@@ -1,6 +1,3 @@
-#include "global.h"
+﻿#include "global.h"
+QSet<HWND> SetHwnd;
 
-global::global()
-{
-
-}
