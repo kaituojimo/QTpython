@@ -32,7 +32,9 @@ MainWindow::MainWindow(QWidget *parent) :
             Idmsoft* mDM = dm->GetIns();
             qMapDm[pWnd] = mDM;
             mDM->BindWindow((int)pWnd, "dx3", "windows", "windows", 0);
-
+//            QVariant x,y;
+//            mDM->FindPic(0,0,2000,2000,"D:\\python\\QTpython\\pic\\actions.bmp","000000",0.8,0,x,y);
+//            int a=0;
         }
     }
 
@@ -139,8 +141,10 @@ void MainWindow::on_startButton_clicked()
         CTaskParent *task = new CTaskParent();
         task->setDM(mDM);
         Idmsoft* mDM2= task->getDM();
+        QVariant x,y;
+        task->findpic("D:\\bag.bmp",x,y);
         int b =4;
     }
-    QVariant x,y;
-    mDM->FindPic(0,0,2000,2000,"D:\\shimen.bmp","000000",0.7,0,x,y);
+//    QVariant x,y;
+//    mDM->FindPic(0,0,2000,2000,"D:\\shimen.bmp","000000",0.7,0,x,y);
 }
