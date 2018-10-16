@@ -3,7 +3,9 @@
 #include <QDebug>
 #include <QWindow>
 #include <QDateTime>
+#include <QSettings>
 #include "get_hwnd_by_formname.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -144,6 +146,17 @@ void MainWindow::on_startButton_clicked()
         QVariant x,y;
         task->findpic("D:\\bag.bmp",x,y);
         int b =4;
+        int nThreads = 2;//获取线程数量
+        if (nThreads<1 || nThreads>64)
+            return;
+        bool bKeepFifo = true;//
+
+        QSettings settings("goldenhawking club","QTpython",this);
+        settings.setValue("threads",nThreads);
+        settings.setValue("fifokeep",bKeepFifo);
+        settings.setValue("Payload",100);
+//        m_pMyItem = new MyTaskItem(this);
+//        m_pEngine = new QGHThreadEngine(this,m_pMyItem,nThreads,bKeepFifo);
     }
 //    QVariant x,y;
 //    mDM->FindPic(0,0,2000,2000,"D:\\shimen.bmp","000000",0.7,0,x,y);

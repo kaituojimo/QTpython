@@ -9,7 +9,9 @@
 #include <QDir>
 #include "global.h"
 #include <qprocess.h>
-#include "ctask_parent.h"
+#include <MakeTask/ctask_parent.h>
+//#include <Thread/mytaskitem.h>
+//#include <Thread/qghthreadengine.h>
 namespace Ui {
 class MainWindow;
 }
@@ -33,6 +35,8 @@ private:
     QList<QString> tasklist;
     QProcess* caller;
     QMap<HWND,Idmsoft*> qMapDm;
+//    QGHThreadEngine * m_pEngine;
+//    MyTaskItem * m_pMyItem;
 private slots:
     void Result();
 
