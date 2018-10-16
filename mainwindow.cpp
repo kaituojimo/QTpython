@@ -155,8 +155,8 @@ void MainWindow::on_startButton_clicked()
         settings.setValue("threads",nThreads);
         settings.setValue("fifokeep",bKeepFifo);
         settings.setValue("Payload",100);
-//        m_pMyItem = new MyTaskItem(this);
-//        m_pEngine = new QGHThreadEngine(this,m_pMyItem,nThreads,bKeepFifo);
+        m_pMyItem = new MyTaskItem(this);
+        m_pEngine = new QGHThreadEngine(this,m_pMyItem,nThreads,bKeepFifo);
     }
 //    QVariant x,y;
 //    mDM->FindPic(0,0,2000,2000,"D:\\shimen.bmp","000000",0.7,0,x,y);
