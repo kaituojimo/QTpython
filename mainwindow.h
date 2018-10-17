@@ -12,6 +12,7 @@
 #include <MakeTask/ctask_parent.h>
 #include <Thread/mytaskitem.h>
 #include <Thread/qghthreadengine.h>
+#include <MakeTask/c_myadmin.h>
 
 namespace Ui {
 class MainWindow;
@@ -40,9 +41,9 @@ private:
     MyTaskItem * m_pMyItem;
 private slots:
     void Result();
-
-    void on_pushButton_clicked();
     void on_startButton_clicked();
+signals:
+    void maketask(QObject * ,const QByteArray &  );
 };
 
 #endif // MAINWINDOW_H

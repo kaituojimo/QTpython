@@ -2,6 +2,8 @@
 #define MYTASKITEM_H
 #include <qprocess.h>
 #include "qghthreadtaskitem.h"
+#include "dm.h"
+using namespace Dm;
 class MyTaskItem : public QGHThreadTaskItem
 {
     Q_OBJECT

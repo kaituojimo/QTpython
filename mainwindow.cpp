@@ -6,6 +6,7 @@
 #include <QSettings>
 #include "get_hwnd_by_formname.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -39,7 +40,18 @@ MainWindow::MainWindow(QWidget *parent) :
 //            int a=0;
         }
     }
+    int nThreads = 2;//获取线程数量
+    if (nThreads<1 || nThreads>64)
+        return;
+    bool bKeepFifo = true;//
 
+    QSettings settings("goldenhawking club","QTpython",this);
+    settings.setValue("threads",nThreads);
+    settings.setValue("fifokeep",bKeepFifo);
+    settings.setValue("Payload",100);
+    m_pMyItem = new MyTaskItem(this);
+    m_pEngine = new QGHThreadEngine(this,m_pMyItem,nThreads,bKeepFifo);
+    connect(this,SIGNAL(maketask(QObject*,QByteArray)),m_pEngine,SLOT(append_new(QObject*,QByteArray)));
 //    /*qint32 npicnum= 0;//调用python脚本找图，速度太慢遂放弃
 //    for(auto i = SetHwnd.begin();i != SetHwnd.end();i++){
 //        QPixmap map = screen->grabWindow((WId)((HWND)*i));
@@ -98,10 +110,7 @@ void MainWindow::Result()
     QString result_str = QString::fromLocal8Bit(process->readAll());
 }
 
-void MainWindow::on_pushButton_clicked()
-{
 
-}
 bool MainWindow::initpython()
 {
     //Py_SetPythonHome((wchar_t*)(L"C:/Users/xing/AppData/Local/Programs/Python/Python36-32"));
@@ -140,23 +149,14 @@ void MainWindow::on_startButton_clicked()
     for(auto i = qMapDm.begin();i!=qMapDm.end();i++)
     {
         mDM = (Idmsoft*)i.value();
-        CTaskParent *task = new CTaskParent();
+        Cmyadmin *task = new Cmyadmin();
         task->setDM(mDM);
-        Idmsoft* mDM2= task->getDM();
-        QVariant x,y;
-        task->findpic("D:\\bag.bmp",x,y);
-        int b =4;
-        int nThreads = 2;//获取线程数量
-        if (nThreads<1 || nThreads>64)
-            return;
-        bool bKeepFifo = true;//
-
-        QSettings settings("goldenhawking club","QTpython",this);
-        settings.setValue("threads",nThreads);
-        settings.setValue("fifokeep",bKeepFifo);
-        settings.setValue("Payload",100);
-        m_pMyItem = new MyTaskItem(this);
-        m_pEngine = new QGHThreadEngine(this,m_pMyItem,nThreads,bKeepFifo);
+        //c_dm->dm = task->getDM();
+        QByteArray a;
+        a.append("010203");
+        emit maketask(task,a);
+//        QVariant x,y;
+//        task->findpic("D:\\bag.bmp",x,y);
     }
 //    QVariant x,y;
 //    mDM->FindPic(0,0,2000,2000,"D:\\shimen.bmp","000000",0.7,0,x,y);

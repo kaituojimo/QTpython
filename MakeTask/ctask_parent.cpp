@@ -1,14 +1,17 @@
 ﻿#include "ctask_parent.h"
 #include <QTime>
 #include <QCoreApplication>
-CTaskParent::CTaskParent()
+CTaskParent::CTaskParent(QObject *parent) : QObject(parent)
 {
 
 }
-void CTaskParent::findpic(QString sPicPath,QVariant &x,QVariant &y)
+bool CTaskParent::findpic(QString sPicPath,QVariant &x,QVariant &y)
 {
     DM->FindPic(0,0,2000,2000,sPicPath,"000000",0.6,0,x,y);
-    int a =2;
+    if(x>0 && y>0)
+        return true;
+    else
+        return false;
 }
 void CTaskParent::movemouse(int x,int y)
 {
