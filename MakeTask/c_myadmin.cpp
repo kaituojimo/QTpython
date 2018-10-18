@@ -136,6 +136,14 @@ bool Cmyadmin::MakeZhuoGui()
         {
             sleep(2000);
         }
+        else if(findClick(path+"sure.bmp"))
+        {
+            sleep(2000);
+        }
+        else if(findClick(path+"use.bmp | "+path+"use2.bmp"))
+        {
+            sleep(2000);
+        }
         else
             if(nFindFight > 50)
                 break;
