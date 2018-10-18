@@ -106,6 +106,9 @@ bool Cmyadmin::MakeZhuoGui()
     while (1) {
         sleep(1000);
         QString path=dir.currentPath()+"/pic/zhuogui/";
+        QString s = DM->FindPicEx(0,0,2000,2000,path+"zhuoguied.bmp","000000",0.5,0);
+        QVariant x,y;
+        DM->FindPic(0,0,2000,2000,path+"zhuoguied.bmp","000000",0.6,0,x,y);
 
         if(findClick(path+"action.bmp | "+path+"action2.bmp"))
         {

@@ -14,7 +14,6 @@ using namespace Dm;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-     Q_INIT_RESOURCE(qtrcs);
 //    Idmsoft*  m_DM = new Idmsoft;
 //    // 实例化COM组件对象
 //    QString path;
