@@ -1,21 +1,26 @@
 ﻿#include "ctask_parent.h"
 #include <QTime>
 #include <QCoreApplication>
+#include <QDateTime>
 CTaskParent::CTaskParent(QObject *parent) : QObject(parent)
 {
 
 }
-bool CTaskParent::findpic(QString sPicPath,QVariant &x,QVariant &y)
+int CTaskParent::findpic(QString sPicPath,QVariant &x,QVariant &y)
 {
     DM->FindPic(0,0,2000,2000,sPicPath,"000000",0.6,0,x,y);
-    if(x>0 && y>0)
-        return true;
+    if(x.Int>0 && y.Int>0)
+        return 1;
     else
-        return false;
+        return 0;
 }
 void CTaskParent::movemouse(int x,int y)
 {
     DM->MoveTo(x,y);
+}
+QString CTaskParent::getcurrentTime()
+{
+    return QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
 }
 void CTaskParent::keydown(QString& key_str)
 {
@@ -57,4 +62,11 @@ void CTaskParent::setDM(Idmsoft* mDM)
 Idmsoft* CTaskParent::getDM()
 {
     return DM;
+}
+void CTaskParent::sleep(int mSec)
+{
+    QTime dieTime = QTime::currentTime().addMSecs(mSec);
+    while( QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    ;
 }

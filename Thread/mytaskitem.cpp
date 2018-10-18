@@ -17,7 +17,7 @@ void MyTaskItem::run(QObject * task_source, const QByteArray & data_array,int Th
     Cmyadmin *task =(Cmyadmin *)task_source;
 
     Idmsoft *dm = task->getDM();
-    task->MakeShiMen();
+    task->MakeZhuoGui();
 
     if(result == -1)
         qDebug()<<"解析失败，请检查帧格式";
