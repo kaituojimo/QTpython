@@ -35,8 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
             Idmsoft* mDM = dm->GetIns();
             qMapDm[pWnd] = mDM;
 
-            mDM->BindWindowEx((int)pWnd, "dx3", "windows", "windows", "dx.public.active.api",0);
-//            QVariant x,y;
+            //int i = mDM->BindWindowEx((int)pWnd, "dx3", "windows", "windows", "dx.public.active.api",0);
+            //int i = mDM->BindWindowEx((int)pWnd, "dx3", "windows", "windows", "dx.public.active.api",0);
+            int hwnd = (int)pWnd;
+            int dm_ret = mDM->BindWindowEx(hwnd,"dx2","windows3","windows","",0);
+            dm_ret = mDM->GetLastError();
+            //            QVariant x,y;
 //            mDM->FindPic(0,0,2000,2000,"D:\\python\\QTpython\\pic\\actions.bmp","000000",0.8,0,x,y);
 //            int a=0;
         }

@@ -12,9 +12,12 @@ public:
     bool MakeBaotu();
     bool MakeYunBiao();
     bool MakeZhuoGui();
+    bool Islogin();
     QDir dir;
 private:
+    QString StrCurrentPath;
     bool findClick(QString path);
+    bool findMove(QString path,int width,int heigh);
 };
 
 #endif // C_MYADMIN_H
